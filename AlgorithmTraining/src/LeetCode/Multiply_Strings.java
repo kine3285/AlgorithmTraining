@@ -3,31 +3,25 @@ import java.util.*;
 import java.io.*;
 public class Multiply_Strings {
 	public static String multiply(String num1, String num2) {
-		StringBuilder sb = new StringBuilder();
-		int i = num1.length()-1;
-		int j = num2.length()-1;
-		int carry=0;
-		while(i>=0 || j>=0){
-			int curr = 1;
-			if(i>=0) curr*=num1.charAt(i)-48;
-			System.out.println("curr is "+curr);
-			if(j>=0) curr*=num2.charAt(j)-48;
-			System.out.println("curr is "+curr);
-			if(curr>9){
-				carry = curr/10;
-				curr = curr % 10;
+		int n = num1.length();
+		int m = num2.length();
+		int[] arr = new int[n+m];
+		for(int i=n-1; i>=0; i--){
+			for(int j=m-1; j>=0; j--){
+				int curr = (num1.charAt(i)-'0')*(num2.charAt(j)-'0');
+				int loc1 = i+j;
+				int loc2 = i+j+1;
+				int currsum = curr + arr[loc2];
+				arr[loc1] += currsum/10;
+				arr[loc2] = currsum%10;
 			}
-			if(carry > 0){
-				curr+=carry;
-				carry = 1;
-			}
-			sb.insert(0, curr);
-			System.out.println("sb is "+sb);
-			i--;
-			j--;
 		}
+		StringBuilder sb = new StringBuilder();
+		for(int i : arr){
+			if(!(sb.length() == 0 && i == 0)) sb.append(i);
+		}
+	    return sb.length() == 0 ? "0" : sb.toString();
 		
-		return sb.toString();
 	}
 	public static void main(String args[]){
 		Scanner sc = new Scanner(System.in);
