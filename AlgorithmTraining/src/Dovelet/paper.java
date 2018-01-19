@@ -8,6 +8,8 @@ public class paper {
 		int n = sc.nextInt();
 		int[] rowcut = new int[n];
 		int[] colcut = new int[n];
+		Arrays.fill(rowcut, 101);
+		Arrays.fill(colcut, 101);
 		int aa=0;
 		int bb=0;
 		for(int i=0;i<n;i++){
@@ -19,20 +21,27 @@ public class paper {
 				colcut[bb++] = a;
 			}
 		}
+		
 		Arrays.sort(rowcut);
 		Arrays.sort(colcut);
-		int Amax=rowcut[0]-0;
-		for(int i=1;i<aa;i++){
-			Amax = Math.max(Amax, rowcut[i]-rowcut[i-1]);
+		int Amax = row;
+		if(aa>0){
+			Amax = rowcut[0]-0;
+			for(int i=1;i<aa;i++){
+				Amax = Math.max(Amax, rowcut[i]-rowcut[i-1]);
+			}
+			Amax = Math.max(Amax, row-rowcut[aa-1]);
 		}
-		Amax = Math.max(Amax, row-rowcut[aa]);
 		
-		int Bmax = colcut[0]-0;
-		for(int i=1;i<bb;i++){
-			Bmax = Math.max(Bmax, colcut[i]-colcut[i-1]);
+		int Bmax = col;
+		if(bb>0){
+			Bmax = colcut[0]-0;
+			for(int i=1;i<bb;i++){
+				Bmax = Math.max(Bmax, colcut[i]-colcut[i-1]);
+			}
+			Bmax = Math.max(Bmax, col-colcut[bb-1]);
 		}
-		Bmax = Math.max(Bmax, col-colcut[bb]);
-		System.out.println(Amax+" "+Bmax);
+		
 		System.out.println(Amax*Bmax);
 	}
 }
