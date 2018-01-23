@@ -13,7 +13,6 @@ public class emirps {
 			temp=n%10+temp*10;
 			n=n/10;
 		}
-		System.out.println("temp is "+temp);
 		return temp;
 	}
 	public static void main(String[] args){
@@ -21,9 +20,9 @@ public class emirps {
 		int n = sc.nextInt();
 		
 		if(primenum(n)){
-			if(primenum(reverse(n)))System.out.println("n is an emirp");
-			else System.out.println("n is a prime");
-		}else System.out.println("n is not prime");
+			if(primenum(reverse(n)))System.out.println(n+" is an emirp");
+			else System.out.println(n+" is a prime");
+		}else System.out.println(n+" is not prime");
 		
 	}
 }
