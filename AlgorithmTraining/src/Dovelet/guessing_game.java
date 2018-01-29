@@ -5,16 +5,17 @@ public class guessing_game {
 		Scanner sc = new Scanner(System.in);
 		int high=Integer.MAX_VALUE;
 		int low = Integer.MIN_VALUE;
-		
-		
 		while(true){
 			int n = sc.nextInt();
+			sc.nextLine();
 			String s = sc.nextLine();
-			if(s=="too high"){
-				high = n;
-			}else if(s=="too low"){
-				low = n;
-			}else if(s=="right on"){
+			if(s.equals("too high")){
+				if(n<high)
+					high = n;
+			}else if(s.equals("too low")){
+				if(n>low)
+					low = n;
+			}else if(s.equals("right on")){
 				if(n>low && n<high)System.out.println("Stan may be honest");
 				else System.out.println("Stan is dishonest");
 				break;
