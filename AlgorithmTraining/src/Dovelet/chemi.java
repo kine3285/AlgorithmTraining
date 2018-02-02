@@ -12,7 +12,6 @@ public class chemi {
 				System.out.println("i is "+i+", temp is "+temp);
 				arr[i+2]='^';
 				arr[i+1]='^';
-				
 			}
 		}
 		StringBuilder sb = new StringBuilder();
